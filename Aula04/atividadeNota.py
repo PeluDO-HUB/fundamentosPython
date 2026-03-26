@@ -4,7 +4,7 @@ import os
 
 def menuPrograma():
     print("Escolha qual Exercicio quer ver\nDigite 1 para adicionar as notas do aluno,2 para adicionar a quantidade de turmas e alunos,\n" \
-    "3 contador de casas do numero inserido,4 criador de senhas e 5 calculadora, 6 limpará o prompt de comando e 7 termina o programa")
+    "3 contador de casas do numero inserido,4 criador de senhas e 5 calculadora, 6 eventos, 7 limpará o prompt de comando e 8 termina o programa")
     escolha=int(input("Esperando o numero do Exercicio...   "))
     match escolha:
         case 1:
@@ -18,9 +18,11 @@ def menuPrograma():
         case 5:
             calculadora()
         case 6:
+            evento()
+        case 7:
             os.system("cls")
             menuPrograma()
-        case 7:
+        case 8:
            print("Finalizando o programa...")
         case _:
             print("opção invalida")
@@ -45,6 +47,7 @@ def mediaAluno():
     else:
         media = somaNota/contagem
         print(f"A media do aluno foi de {media:.2f}")
+    print("")
     menuPrograma()
 
     
@@ -67,6 +70,7 @@ def mediaTurma():
     else:
         mediaAluno = somaAluno/contagem
         print(f"A media de alunos por sala é de {mediaAluno:.0f}")
+    print("")
     menuPrograma()
 
 def contadorCasa():
@@ -82,6 +86,7 @@ def contadorCasa():
             contagem+=1
         else:
             print(f"Quantidade de casas é de {contagem}")
+            print("")
             menuPrograma()
 
 
@@ -95,6 +100,7 @@ def criadorSenhas():
         verificador=str(input("Senhas diferentes, digite a senha novamente: "))
     else:
         print("Senha gravada com sucesso")
+        print("")
         menuPrograma()
 
 
@@ -118,6 +124,34 @@ def calculadora():
         print("Pra que a calculadora amigo?")
     else:
         print(f"A soma de todos os {contador} numeros é de {SomaIns}")
+    print("")
     menuPrograma()
 
+
+def evento():
+
+    qtdPessoas=int(input("Digite a quantidade de pessoas "))
+    contador=0
+    qtdEntrou=0
+    while qtdPessoas > contador:
+        
+        contador+=1
+
+        idade=int(input(f"Digite a idade da {contador}° pessoa: "))
+        if idade <16:
+            print("Menores de 16 anos não entram")
+        elif idade>=16 and idade<18:
+            permissao=int(input("Possui convite? Digite 1 para sim e 0 para não: "))
+            if permissao==1:
+                print("Entrada Liberada")
+                qtdEntrou+=1
+            else:
+                print("Permissão de pessoas de 16 e 17 anos apenas com convite, Acesso negado!")
+        else:
+            qtdEntrou+=1
+            print("Aproveite a festa")
+    print(f"A quantidade de pessoas que tentaram entrar foi de {qtdPessoas} e {qtdEntrou} conseguiram entrar")
+    print("")
+    menuPrograma()
+    
 menuPrograma()
