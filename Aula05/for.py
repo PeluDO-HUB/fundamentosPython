@@ -102,8 +102,8 @@ def senha():
 def fibonachi():
     anterior = 0
     atual = 1
-
-    for i in range(10):
+    qtd=int(input("Quantidade de numeros de Fibonacci a serem exibidos: "))
+    for i in range(qtd):
         print(anterior)
         proximo = anterior + atual
         anterior = atual
