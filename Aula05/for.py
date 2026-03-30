@@ -100,20 +100,14 @@ def senha():
 
 
 def fibonachi():
-    fibo=0
-    for i in range(0,6,fibo+1):
-        if i == 0 :
-            print(i)
-            i+=1
-            fibo = i
-        elif i ==1:
-            print(i)
-            print(i)
-            i+=1
-            fibo = i
-        else:
-            print(fibo)
-            fibo+=i-1
+    anterior = 0
+    atual = 1
 
+    for i in range(10):
+        print(anterior)
+        proximo = anterior + atual
+        anterior = atual
+        atual = proximo
+    
 
 menuPrograma()
