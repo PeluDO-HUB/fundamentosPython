@@ -1,6 +1,39 @@
 
 
 
+class idade:
+    def __init__(self, valor=0):
+        self.valor = self.validar_idade(valor)
+
+    def validar_idade(self, valor):
+        try:
+            valor = int(valor)
+        except (TypeError, ValueError):
+            raise ValueError("A idade deve ser um número inteiro.")
+
+        if valor < 0:
+            raise ValueError("A idade não pode ser negativa.")
+
+        return valor
+
+    def categoria(self):
+        if self.valor < 13:
+            return "criança"
+        if self.valor < 18:
+            return "adolescente"
+        if self.valor < 60:
+            return "adulto"
+        return "idoso"
+
+    def adicionar_anos(self, anos):
+        anos = self.validar_idade(anos)
+        self.valor += anos
+        return self.valor
+
+    def __str__(self):
+        return f"{self.valor} anos ({self.categoria()})"
+
+
 def lista():
     num = [1,2,3,4,5]
 
@@ -30,16 +63,37 @@ def lista():
 
 alunos=[]
 totalAltura=0
-for i in range(30):
+qtdalunos = int(input("Digite a quantidade de alunos a serem inseridos: "))
+for i in range(qtdalunos):
     nome = input("Digite o nome: ")
-    idade = int(input("Digite a idade: "))
-    altura = float(input("Digite a altura: "))
+    
+    while True:
+        try:
+            idade = int(input("Digite a idade: "))
+            if idade < 0 or idade > 18:
+                print("Idade inválida, digite novamente")
+            else:
+                break
+        except ValueError:
+            print("Digite apenas números inteiros para a idade.")
+    
+    
+    while True:
+        try:
+            altura = float(input("Digite a altura: "))
+
+            if altura <= 0 or altura > 3:
+                print("Altura inválida, digite novamente")
+            else:
+                break
+        except ValueError:
+            print("Digite Um número válido para a altura.")
     
     alunos.append([nome, idade, altura])
     print(alunos[i])
     totalAltura += altura
 
-mediaAltura = totalAltura / 30
+mediaAltura = totalAltura / qtdalunos
 alunos13 = 0
 
 for i in range(len(alunos)):
