@@ -94,10 +94,17 @@ def contadorCasa():
 def criadorSenhas():
     senha=str(input("Crie uma senha: "))
 
-    verificador=str(input("Digite a senha novamente: "))
+    verificador=str(input("Digite a senha criada novamente: "))
 
     while senha!=verificador :
-        verificador=str(input("Senhas diferentes, digite a senha novamente: "))
+        print("Senhas diferentes!")
+        tentativas=str(input("Deseja criar novamente a senha? S ou N: ")).lower()
+        if tentativas=="s":
+            criadorSenhas()
+        elif tentativas=="n":
+            verificador=str(input("Digite a senha criada novamente: "))
+        else:
+            print("Opção inválida")
     else:
         print("Senha gravada com sucesso")
         print("")
@@ -106,24 +113,49 @@ def criadorSenhas():
 
 def calculadora():
     
-
-    numeroIns=int(input("Digite um Valor a ser somado, ao digitar 0 finaliza a soma e mostra o resultado: "))
+    while True:
+        try:
+            numeroIns=int(input("Digite um Valor a ser somado, ao digitar 0 finaliza a soma e mostra o resultado: "))
+            if numeroIns < 0:
+                print("Número inválido, digite novamente")
+            else:
+                break
+        except ValueError:
+            print("Digite apenas números.")
     contador = 0
     SomaIns = 0
 
     while numeroIns != 0:
-        if numeroIns <=0:
+        if numeroIns <0:
             print("numero invalido")
-            numeroIns=int(input("Digite um Valor a ser somado: "))
+            while True:
+                    try:
+                        numeroIns=int(input("Digite um Valor a ser somado, ao digitar 0 finaliza a soma e mostra o resultado: "))
+                        if numeroIns < 0:
+                            print("Número inválido, digite novamente")
+                        else:
+                            break
+                    except ValueError:
+                        print("Digite apenas números.")
+        elif numeroIns == 0:
+            break
         else:
             contador+=1
             SomaIns+= numeroIns
-            numeroIns=int(input("Digite um Valor a ser somado: "))
+            while True:
+                try:
+                    numeroIns=int(input("Digite um Valor a ser somado, ao digitar 0 finaliza a soma e mostra o resultado: "))
+                    if numeroIns < 0:
+                        print("Número inválido, digite novamente")
+                    else:
+                        break
+                except ValueError:
+                    print("Digite apenas números.")
     
     if contador == 0 or contador==1:
         print("Pra que a calculadora amigo?")
     else:
-        print(f"A soma de todos os {contador} numeros é de {SomaIns}")
+        print(f"A soma de todos os {contador} numeros é de {SomaIns} e a media é de {SomaIns/contador:.2f}")
     print("")
     menuPrograma()
 

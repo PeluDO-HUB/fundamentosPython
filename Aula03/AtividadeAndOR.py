@@ -78,7 +78,7 @@ def exercicio04():
           "Caso contrário, não receberá bônus. O programa deve exibir uma mensagem informando se o bônus foi concedido ou não.")
     salario=float(input("Digite seu salario: "))
     tempoEmpresa=int(input("Digite seu tempo de empresa em anos: "))
-    if salario>=3000 and tempoEmpresa >=2:
+    if salario < 3000 and tempoEmpresa >=2:
         print("Parabens, você receberá o Bonus")
     else:
         print("Que pena você não receberá o bonus ;_;")
